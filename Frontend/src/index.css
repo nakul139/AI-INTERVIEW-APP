@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Urbanist", sans-serif;
+  --breakpoint-3xl: 1920px;
+  --color-primary: #ff9324;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-display);
+  }
+  body {
+    background-color: #fcfbfc;
+    overflow-x: hidden;
+  }
+}
+
+/* custom Scrollbar styling */
+.cutom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.cutom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4);
+  border-radius: 10px;
+}
+
+.cutom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+@layer utilities {
+  /* Animate text with a shine effect */
+  @keyframes text-shine {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+.animate-text-shine {
+  animation: text-shine 3s ease-in-out infinite alternate;
+}
+
+@keyframes blob1 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -60px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+@keyframes blob2 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 60px) scale(1.05);
+  }
+  66% {
+    transform: translate(20px, -40px) scale(0.95);
+  }
+}
+@keyframes blob3 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(20px, 140px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, -30px) scale(0.85);
+  }
+}
+
+.animate-blob1 {
+  animation: blob1 8s ease-in-out infinite;
+}
+
+.animate-blob2 {
+  animation: blob2 10s ease-in-out infinite;
+}
+.animate-blob3 {
+  animation: blob2 12s ease-in-out infinite;
+}
+
+.input-box {
+  @apply w-full flex justify-between gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mt-3 mb-4 border border-gray-100 outline-none focus-within:border-orange-400;
+}
+
+.btn-primary {
+  @apply w-full flex items-center justify-center gap-3 text-sm font-medium text-white bg-black shadow-lg  shadow-orange-600/5 p-[10px] rounded-md my-1  hover:bg-orange-600/15  hover:text-black cursor-pointer;
+}
+.btn-small {
+  @apply flex items-center justify-center gap-3 bg-linear-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2  rounded-lg hover:bg-black hover:text-white transition-colors cursor-pointer hover:shadow-2xl hover:shadow-orange-300;
+}
+
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.4s ease;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: var(--mouse-y);
+  left: var(--mouse-x);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15),
+    transparent 60%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.4s ease;
+  background: rgba(30, 30, 40, 0.5);
+  backdrop-filter: blur(14px);
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: var(--mouse-y);
+  left: var(--mouse-x);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08),
+    transparent 60%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
